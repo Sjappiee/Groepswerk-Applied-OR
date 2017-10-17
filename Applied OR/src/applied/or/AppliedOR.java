@@ -16,6 +16,7 @@ public class AppliedOR {
      */
     public static void main(String[] args) {
         System.out.println("Hello fgt");
+        System.out.println("SOnck kan het nie");
     }
     
 }
