@@ -20,7 +20,7 @@ public class AppliedOR {
         
         System.out.println("Het lukt!");
         System.out.println("SOnck kan het wel gsgr");
-        System.out.println("test 5000000");
+        System.out.println("test 1000000");
         
         System.out.println("Dit is echt frankensteins monster g");
         
