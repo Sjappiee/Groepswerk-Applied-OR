@@ -19,7 +19,7 @@ public class AppliedOR {
         System.out.println("SOnck kan het nie");
         
         System.out.println("Het lukt!");
-        System.out.println("SOnck kan het wel ");
+        System.out.println("SOnck kan het wel gsgr");
         
     }
     
