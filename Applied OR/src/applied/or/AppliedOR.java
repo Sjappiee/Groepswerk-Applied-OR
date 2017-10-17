@@ -21,6 +21,8 @@ public class AppliedOR {
         System.out.println("Het lukt!");
         System.out.println("SOnck kan het wel gsgr");
         
+        System.out.println("Dit is echt frankensteins monster g");
+        
     }
     
 }
