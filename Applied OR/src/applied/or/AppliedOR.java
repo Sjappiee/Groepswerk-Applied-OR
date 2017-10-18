@@ -24,13 +24,14 @@ public class AppliedOR {
     
     //variables
     int k,m,i,j;
-    int amountShifts, lengthShifts, amoundDays;
+    int amountShifts, lengthShifts, amoundDays, amountNurses;
     // arrays
     int [] startShifts;
     int [] endShifts;
     int [] hrs;
     int[] shifts;
     int [][] req;
+    String [] personelNr;
 
  void read_shift_system(char department){
       
@@ -97,9 +98,10 @@ public class AppliedOR {
        try
         {
             inputStream=new Scanner(new File(fileName));
-            String line=inputStream.nextLine();
-            System.out.println(line);
-                
+            for (k = 0; k < amountNurses; k++){
+            personelNr[k] = inputStream.next(); //test: bij k=0, kijken of hij bij 1ste string start of door de "next" direct naar de volgende gaat)
+            
+            }
             inputStream.close();
         }
         catch(FileNotFoundException e)
