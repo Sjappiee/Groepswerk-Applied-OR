@@ -4,6 +4,8 @@ package applied.or;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Process {
@@ -15,8 +17,9 @@ public class Process {
     //int maxShifts = 5;
     
     //variables
-    int k,m,i,j;
-    int amountShifts, lengthShifts, amoundDays, amountNurses;
+    int k,i,j,l;
+    
+    int amountShifts, lengthShifts, amountDays, amountNurses;
     // arrays
     int [] startShifts;
     int [] endShifts;
@@ -30,7 +33,7 @@ public class Process {
 
 // void read_shift_system(char department){
 //      
-//        String fileName="files/Shift_system_dpt_" + department + ".txt";
+//        String fileName="Shift_system_dpt_" + department + ".csv";
 //
 //        Scanner inputStream=null;
 //       try{
@@ -64,7 +67,7 @@ public class Process {
 //      
 //            hrs[shifts[0]] = 0;         // The free shift contains no duty time
 //    
-//             for (i = 1; i < amoundDays; i++){              // Copy staffing requirements to the other days
+//             for (i = 1; i < amountDays; i++){              // Copy staffing requirements to the other days
 //                for (j = 0; j <= amountShifts; j++)
 //                    req[i][shifts[j]] = req[0][shifts[j]];
 //            }
@@ -81,24 +84,46 @@ public class Process {
 //       }
 // }
  
- void read_personnel_characteristics(char department){
+ void read_personnel_characteristics(char department,int nurses){
      
-        String fileName="files/Personnel_dpt_" + department + ".txt";
-        
+        String fileName="C:\\Users\\Admin\\Documents\\_2de master\\applied OR bestanden\\Personnel_dpt_" + department + ".csv";
+        int AmountNurses = nurses;
         Scanner inputStream=null;
+        String [] values = null;
        try{
             inputStream=new Scanner(new File(fileName));
-            for (k = 0; k < amountNurses; k++){
-                personelNr[k] = inputStream.next(); //test: bij k=0, kijken of hij bij 1ste string start of door de "next" direct naar de volgende gaat)
-                for (i = 0; i < amoundDays; i++){
-                    for (j = 0; j < 5; j++){
-                        pref[k][i][j] = inputStream.nextInt();
-                    }
-                }
-                nurseEmployment [k] = inputStream.nextInt();
-                nurseType [k] = inputStream.nextInt();
+            while(inputStream.hasNext()){
+                String data = inputStream.next();
+                values = data.split(",");
             }
             inputStream.close();
+            
+            try{
+                k=0;
+                l = 0;
+                int aantalCellen = AmountNurses*(28*5+2);
+                while(k<aantalCellen){
+                    personelNr[l] = values[k];
+                    for(i=0;i<35;i++){
+                        if(i<29){
+                            for(j=0;j<5;j++){
+                               pref[l][i][j] = Integer.parseInt(values[k+i+j]);
+                            }
+                        }
+                        if(i==33){
+                           nurseEmployment[l] = Float.parseFloat(values [k+i]);
+                        }
+                        if (i==34){
+                           nurseType[l] =  Integer.parseInt(values[k+i]);
+                        }
+                    } 
+                    k = k + 1 + 34;
+                    l+=1;
+                }
+            }
+            catch(NumberFormatException e){
+                System.out.println("Problem with parsing");
+            }
        }
        catch(FileNotFoundException e){
             System.out.println("Problem with opening file: "+fileName);
