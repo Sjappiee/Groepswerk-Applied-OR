@@ -17,10 +17,10 @@ public class Process {
     //int maxShifts = 5;
     
     //variables
-    int k,i,j,l;
+    int k,i,j,l,m;
     
     int amountShifts, lengthShifts, amountDays, amountNurses;
-    // arrays
+    // arraysLists
     int [] startShifts;
     int [] endShifts;
     int [] hrs;
@@ -89,41 +89,40 @@ public class Process {
         String fileName="C:\\Users\\Admin\\Documents\\_2de master\\applied OR bestanden\\Personnel_dpt_" + department + ".csv";
         int AmountNurses = nurses;
         Scanner inputStream=null;
-        String [] values = null;
+        personelNr = new String[AmountNurses];
+        pref = new int [AmountNurses][28][5];
+        nurseEmployment = new float[AmountNurses];
+        nurseType = new int [AmountNurses];
+
        try{
             inputStream=new Scanner(new File(fileName));
-            while(inputStream.hasNext()){
-                String data = inputStream.next();
-                values = data.split(",");
-            }
-            inputStream.close();
-            
-            try{
-                k=0;
-                l = 0;
-                int aantalCellen = AmountNurses*(28*5+2);
-                while(k<aantalCellen){
-                    personelNr[l] = values[k];
-                    for(i=0;i<35;i++){
-                        if(i<29){
-                            for(j=0;j<5;j++){
-                               pref[l][i][j] = Integer.parseInt(values[k+i+j]);
-                            }
+            k=0;
+            while(inputStream.hasNextLine()){
+                String data = inputStream.nextLine();
+                String [] array = data.split(";");
+                String x = array[0];
+                personelNr[k] = x;
+                try{
+                    int day ;
+                    m=0;
+                    for(day = 0; day<28;day++){
+                        for(j=0;j<5;j++){
+                           int w = Integer.parseInt(array[m+1]);
+                           pref[k][day][j] = w;
+                           m+=1;
                         }
-                        if(i==33){
-                           nurseEmployment[l] = Float.parseFloat(values [k+i]);
-                        }
-                        if (i==34){
-                           nurseType[l] =  Integer.parseInt(values[k+i]);
-                        }
-                    } 
-                    k = k + 1 + 34;
-                    l+=1;
+                    }
+                    float v = Float.parseFloat(array[141]);
+                    nurseEmployment[k] = v;
+                    int u = Integer.parseInt(array[142]);
+                    nurseType[k] = u;                
+                    k+=1;
+                }
+                 catch(NumberFormatException e){
+                System.out.println("Problem with parsing");
                 }
             }
-            catch(NumberFormatException e){
-                System.out.println("Problem with parsing");
-            }
+            inputStream.close();
        }
        catch(FileNotFoundException e){
             System.out.println("Problem with opening file: "+fileName);
