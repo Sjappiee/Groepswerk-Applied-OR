@@ -123,23 +123,86 @@ public class ExcellReader {
             w = Workbook.getWorkbook(inputWorkbook); //workbook in java initialiseren 
             Sheet sheet = w.getSheet(0); //om eerste sheet te nemen van excel bestand
             Cell cell = sheet.getCell(17, row);
-            System.out.println(cell.getContents());
+            pref += cell.getContents();
             
         }
         catch (BiffException e) {
               e.printStackTrace();
         }
+        System.out.println(pref);
         return pref;
+        }
+        
+        
+        public int giveType (int row) throws IOException {//retourneert de preferentie van nurse in huidige rij
+            
+        File inputWorkbook = new File (inputFile);
+        Workbook w;
+        int type = 0;
+        
+        try{
+            w = Workbook.getWorkbook(inputWorkbook); //workbook in java initialiseren 
+            Sheet sheet = w.getSheet(0); //om eerste sheet te nemen van excel bestand
+            Cell cell = sheet.getCell(16, row);
+            type = Integer.parseInt(cell.getContents());
+            
+        }
+        catch (BiffException e) {
+              e.printStackTrace();
+        }
+        System.out.println(type);
+        return type;
+        }
+        
+        
+        public double giveEmploymentRate (int row) throws IOException {//retourneert de preferentie van nurse in huidige rij
+            
+        File inputWorkbook = new File (inputFile);
+        Workbook w;
+        float EmploymentRate =0;
+        
+        try{
+            w = Workbook.getWorkbook(inputWorkbook); //workbook in java initialiseren 
+            Sheet sheet = w.getSheet(0); //om eerste sheet te nemen van excel bestand
+            Cell cell = sheet.getCell(15, row);
+            EmploymentRate = Float.parseFloat(cell.getContents());
+            
+        }
+        catch (BiffException e) {
+              e.printStackTrace();
+        }
+        System.out.println(EmploymentRate);
+        return EmploymentRate;
+        }
+        
+        public String giveNurseNumber (int row) throws IOException {//retourneert de preferentie van nurse in huidige rij
+            
+        File inputWorkbook = new File (inputFile);
+        Workbook w;
+        String number ="";
+        
+        try{
+            w = Workbook.getWorkbook(inputWorkbook); //workbook in java initialiseren 
+            Sheet sheet = w.getSheet(0); //om eerste sheet te nemen van excel bestand
+            Cell cell = sheet.getCell(0, row);
+            number = cell.getContents();
+            
+        }
+        catch (BiffException e) {
+              e.printStackTrace();
+        }
+        System.out.println(number);
+        return number;
         }
         
         /*
         
         TE MAKEN
         
-        -give preference
-        give type
-        give employment rate
-        -give number
+        -give preference OK
+        give type OK
+        -give employment rate OK
+        -give number nurse OK
         -give binairy schedule
         */
 }
