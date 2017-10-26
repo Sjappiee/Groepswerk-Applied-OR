@@ -34,6 +34,17 @@ public class ExcellReader {
             w = Workbook.getWorkbook(inputWorkbook); //workbook in java initialiseren 
             Sheet sheet = w.getSheet(0); //om eerste sheet te nemen van excel bestand
             int startRow = searchFirstRow();
+            int infoRow = 4;
+            
+            for (int i = startRow; i < sheet.getRows(); i++) { //gaat door een rij, kolom per kolom. Dan weer volgende rij enzovoort
+                for (int j = 0; j < sheet.getColumns(); j++) {
+                    Cell cell = sheet.getCell(j,i);
+                    System.out.println(cell.getContents());
+
+                    
+                    //een heleboel if's om alles juist in het nurse object te steken!
+                }
+            }
 
 
         
@@ -101,4 +112,34 @@ public class ExcellReader {
         }
           return lastRow-1;
     }
+        
+        public String givePref (int row) throws IOException {//retourneert de preferentie van nurse in huidige rij
+            
+        File inputWorkbook = new File (inputFile);
+        Workbook w;
+        String pref ="";
+        
+        try{
+            w = Workbook.getWorkbook(inputWorkbook); //workbook in java initialiseren 
+            Sheet sheet = w.getSheet(0); //om eerste sheet te nemen van excel bestand
+            Cell cell = sheet.getCell(17, row);
+            System.out.println(cell.getContents());
+            
+        }
+        catch (BiffException e) {
+              e.printStackTrace();
+        }
+        return pref;
+        }
+        
+        /*
+        
+        TE MAKEN
+        
+        -give preference
+        give type
+        give employment rate
+        -give number
+        -give binairy schedule
+        */
 }
