@@ -16,13 +16,13 @@ public class AppliedOR {
        }*/
        
        ExcellReader test = new ExcellReader ();
-       test.setInputFile("C:\\TEST AOR\\EchteTest");
+       test.setInputFile("C:\\TEST AOR\\EchteTest.xls");
        
-       test.giveNurseNumber(5);
-       test.giveBinaryDayPlanning(5);
-       test.giveEmploymentRate(5);
-       test.giveType(5);
-       test.givePref(5);
+       test.giveNurseNumber(14);
+       test.giveBinaryDayPlanning(14);
+       test.giveEmploymentRate(14);
+       test.giveType(14);
+       test.givePref(14);
         }
 
     } 
