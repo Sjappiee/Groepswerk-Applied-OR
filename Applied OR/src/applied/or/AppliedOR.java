@@ -1,6 +1,8 @@
 
 package applied.or;
 
+import java.io.IOException;
+
 public class AppliedOR {
  
     public static void main(String[] args) throws IOException {
