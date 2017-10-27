@@ -29,11 +29,11 @@ public class AppliedOR {
        ExcellReader test = new ExcellReader ();
        test.setInputFile("C:\\Users\\stephan\\Documents\\NetBeansProjects\\Groepswerk-Applied-OR\\EchteTest.xls");
        
-       test.giveNurseNumber(31);
-       test.giveBinaryDayPlanning(31);
-       test.giveEmploymentRate(31);
-       test.giveType(31);
-       test.givePref(31);
+       test.giveNurseNumber(5);
+       test.giveBinaryDayPlanning(5);
+       test.giveEmploymentRate(5);
+       test.giveType(5);
+       test.givePref(5);
         }
 
     } 
