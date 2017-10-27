@@ -16,7 +16,7 @@ public class AppliedOR {
        }*/
        
        ExcellReader test = new ExcellReader ();
-       test.setInputFile("C:\\Users\\stephan\\Documents\\NetBeansProjects\\Groepswerk-Applied-OR\\EchteTest.xls");
+       test.setInputFile("C:\\TEST AOR\\EchteTest");
        
        test.giveNurseNumber(5);
        test.giveBinaryDayPlanning(5);
