@@ -18,7 +18,7 @@ public class Nurse {
         this.preferenceText = preferenceText;
         this.type = type;
         this.employmentRate = employmentRate;
-        binaryDayPlanning = new int [7] [];//elke dag 2 opties
+        binaryDayPlanning = new int [2] [7];//elke dag 2 opties
     }
 
     public Nurse() {
